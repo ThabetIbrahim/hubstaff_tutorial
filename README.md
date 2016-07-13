@@ -162,3 +162,43 @@ foreach($report->organizations as $org)
 And we're going to have something that looks like this
 
 ![report](/images/report.png)
+
+And the same goes for screenshots functions, by changing the parameters to
+```php
+$params = array();
+$params['start_time'] = "start_time";
+$params['stop_time']  = "stop_time";
+$params["options"][]  = "organizations";
+$params["options"][]  = "projects";
+$params["options"][]  = "users";
+$params["options"][]  = "offset";
+		
+$value_type = array();
+$value_type['organizations'] = 'input';
+$value_type['projects'] = 'input';
+$value_type['users'] = 'input';
+$value_type['start_time'] = 'datetime';
+$value_type['stop_time'] = 'datetime';
+$value_type['offset'] = 'input';
+```
+Then creating the form like mentioned before, then call the screenshots function using the following
+```php
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+	$start_time = $_POST['start_time'];
+	$stop_time = $_POST['stop_time'];
+	$datetime_start = new DateTime($start_time);
+	$datetime_end = new DateTime($stop_time);
+	$options = $_POST['options'];
+	$screenshots = $hubstaff->screenshots($datetime_start->format(DateTime::ISO8601), $datetime_end->format(DateTime::ISO8601),$options);
+	if(isset($screenshots->error))
+	{
+		echo '<div class = "info" >'.$screenshots->error.'</div>';
+	}
+}
+```
+We'll have the following output
+![report](/images/report.png)
+
+The hubstaff PHP class has much more methods to call other than screenshots and reports that follow the same principle.
+I hope you found this tutorial helpful.
