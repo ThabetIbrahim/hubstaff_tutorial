@@ -56,6 +56,9 @@ if(isset($data['auth_token']))
 ```
 
 Now we'll move our generated authentication token it into our config.php file.
+```PHP
+auth_token=“<Generated authentication token>”
+```
 
 Once we got all that done we can start requesting account related data like reports, users, organizations, notes and others from hubstaff.
 
@@ -181,7 +184,7 @@ $value_type['start_time'] = 'datetime';
 $value_type['stop_time'] = 'datetime';
 $value_type['offset'] = 'input';
 ```
-Then creating the form like mentioned before, then call the screenshots function using the following
+And create the form like mentioned before, after that we gonna call the screenshots function using the following
 ```php
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
@@ -197,7 +200,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	}
 }
 ```
-We'll have the following output
+And we'll have the following output
 ![report](/images/report.png)
 
 The hubstaff PHP class has much more methods to call other than screenshots and reports that follow the same principle.
