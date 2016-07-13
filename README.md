@@ -123,5 +123,42 @@ foreach($params as $index => $param)
 }
 ```
 
+Then we'll be requesting the report by calling custom_date_team function
+```php
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+	$start_date = $_POST['start_date'];
+	$end_date = $_POST['end_date'];
+	$options = $_POST['options'];
+	$report = $hubstaff->custom_date_team($start_date, $end_date, $options);
+	if(isset($report->error))
+	{
+		echo '<div class = "info" >'.$report->error.'</div>';
+	}
+}
+```
+Now let's print the output into ourscreen by iterating over the retured json string
+```php
+foreach($report->organizations as $org)
+{
+	echo "<h2>Organization Name: ".$org->name."</h2>";
+	foreach($org->dates as $dates)
+	{
+		foreach($dates->users as $users)
+		{
+			echo "<h3>User Name: ".$users->name."</h3>";
+			echo "<h4>Time Spent: ".$users->duration."</h4>";
+			echo "<br>";
+			foreach($users->projects as $projects)
+			{
+				echo "<h4>Project Name: ".$projects->name."</h4>";
+				echo "<h5>Time Spent: ".$projects->duration."</h5>";
+				echo "<br>";
+			}
+		}
+	}
+}
+```
+And we're going to have something that looks like this
 
-
+![report](/images/report.png)
