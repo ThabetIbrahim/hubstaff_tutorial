@@ -201,6 +201,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 }
 ```
 And we'll have the following output
+
 ![report](/images/report.png)
 
 The hubstaff PHP class has much more methods to call other than screenshots and reports that follow the same principle.
