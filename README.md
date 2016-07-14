@@ -3,7 +3,7 @@
 This tutorial will go over how to integrate the Hubstaff PHP API into your own PHP application. 
 The Hubstaff API allows you to easily link a User to their Hubstaff account and retrieve useful information such as custom team reports, 
 project and activity details, screenshots, and much more. 
-The [Github repository](https://github.com/Smulligan85/Hubstaff-Gem-Tutorial) for this tutorial includes two branches. 
+The [Github repository]() for this tutorial includes two branches. 
 The master branch is the starter application that this tutorial will walkthrough and the final-tut branch is the complete application. 
 The starter applicaiton is a basic PHP app that includes a User model and some basic authentication. 
 This tutorial will go over first linking a User to their Hubstaff account and then go over how to retrieve data. 
